@@ -53,6 +53,8 @@ class ViewController: UIViewController {
             }
         }
         
+        updateOperatorButton(tag: sender.tag)
+        
         switch sender.tag {
         case 10:
             currentOperation = Operator.add
@@ -93,6 +95,19 @@ class ViewController: UIViewController {
         resultLabel.text = result
         calcState = calculationState.newNumStarted
         
+    }
+    
+    func updateOperatorButton(tag: Int){
+        //clear colors
+        for var i in 10..<14 {
+            if let button = self.view.viewWithTag(i) as? UIButton{
+                button.backgroundColor = UIColor.clear
+            }
+        }
+        //change color button
+        if let button = self.view.viewWithTag(tag) as? UIButton{
+            button.backgroundColor = UIColor.yellow
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
